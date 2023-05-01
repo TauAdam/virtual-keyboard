@@ -31,4 +31,33 @@ export const layouts = [
         { code: 'Equal', symbol: '=' },
         { code: 'Backspace', symbol: 'Backspace', width: 2 },
     ],
+    [
+
+        { code: 'KeyQ', symbol: 'Q' },
+
+        { code: 'KeyW', symbol: 'W' },
+
+        { code: 'KeyE', symbol: 'E' },
+
+        { code: 'KeyR', symbol: 'R' },
+
+        { code: 'KeyT', symbol: 'T' },
+
+        { code: 'KeyY', symbol: 'Y' },
+
+        { code: 'KeyU', symbol: 'U' },
+
+        { code: 'KeyI', symbol: 'I' },
+
+        { code: 'KeyO', symbol: 'O' },
+
+        { code: 'KeyP', symbol: 'P' },
+
+        { code: 'BracketLeft', symbol: '[' },
+
+        { code: 'BracketRight', symbol: ']' },
+
+        { code: 'Backslash', symbol: '\\', width: 2 },
+
+    ],
 ];
