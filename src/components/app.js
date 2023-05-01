@@ -1,18 +1,4 @@
-const renderPage = () => {
-    let root = document.getElementById('root');
-    if (root) {
-        root.innerHTML = renderHeader() + renderKeyboard();
-    } else {
-        root = document.createElement('div');
-        root.id = 'root';
-        root.innerHTML = renderHeader() + renderKeyboard();
-        document.body.appendChild(root);
-    }
-};
-
-export const App = () => {
-    renderPage();
-};
+export const App = () => {};
 
 class Keyboard {
     constructor(layouts) {
@@ -28,29 +14,24 @@ class Keyboard {
     }
 
     init() {
-        // create main elements
         this.elements.main = document.createElement('div');
         this.elements.keysContainer = document.createElement('div');
         this.elements.textarea = document.createElement('textarea');
         this.elements.keyboardContainer = document.createElement('div');
 
-        // add classes
         this.elements.main.classList.add('keyboard');
         this.elements.keysContainer.classList.add('keyboard__keys');
         this.elements.keyboardContainer.classList.add('keyboard__container');
 
-        // add keys to the keys container
         this.keys.forEach((key) => {
             this.elements.keysContainer.appendChild(key.render());
         });
 
-        // add elements to the main element
         this.elements.main.appendChild(this.elements.textarea);
         this.elements.main.appendChild(this.elements.keysContainer);
         this.elements.keyboardContainer.appendChild(this.elements.main);
         document.body.appendChild(this.elements.keyboardContainer);
 
-        // add event listeners
         window.addEventListener('keydown', this.onKeyDown.bind(this));
         window.addEventListener('keyup', this.onKeyUp.bind(this));
         this.elements.keysContainer.addEventListener('mousedown', this.onMouseDown.bind(this));
