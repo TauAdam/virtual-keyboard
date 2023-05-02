@@ -1,14 +1,17 @@
-import { Button } from './Button';
+import { Board } from './Board';
 
 export class Keyboard {
-    constructor(layouts) {
-        this.layouts = layouts;
-        this.currentLayout = 0;
-        this.keys = this.layouts[this.currentLayout].map((keyData) => new Button(keyData));
+    constructor(layout) {
+        this.currentLayout = 'en';
+        this.main = document.createElement('div');
+        this.main.classList.add('keyboard');
+        this.textarea = document.createElement('p');
+        this.board = new Board(layout, this.main, (data) => {
+            this.textarea += data;
+        });
         this.elements = {
             main: null,
             keysContainer: null,
-            textarea: null,
             keyboardContainer: null,
         };
     }
@@ -23,10 +26,6 @@ export class Keyboard {
         this.elements.keysContainer.classList.add('keyboard__keys');
         this.elements.keyboardContainer.classList.add('keyboard__container');
 
-        this.keys.forEach((key) => {
-            this.elements.keysContainer.appendChild(key.render());
-        });
-
         this.elements.main.appendChild(this.elements.textarea);
         this.elements.main.appendChild(this.elements.keysContainer);
         this.elements.keyboardContainer.appendChild(this.elements.main);
@@ -39,9 +38,9 @@ export class Keyboard {
     }
 
     switchLayout() {
-        this.currentLayout = (this.currentLayout + 1) % this.layouts.length;
+        this.currentLayout = (this.currentLayout + 1) % this.layout.length;
         this.keys.forEach((key, i) => {
-            key.setKeyData(this.layouts[this.currentLayout][i]);
+            key.setKeyData(this.layout[this.currentLayout][i]);
         });
     }
 
